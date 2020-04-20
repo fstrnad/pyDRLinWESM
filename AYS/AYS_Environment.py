@@ -24,6 +24,7 @@ from matplotlib.font_manager import FontProperties
 from matplotlib.offsetbox import AnchoredText
 from plots.AYS_3D_figures import create_figure
 import plots.AYS_3D_figures as ays_plot
+import os
 SMALL_SIZE = 12
 MEDIUM_SIZE = 14
 BIGGER_SIZE = 16
@@ -487,7 +488,11 @@ class AYS_Environment(Env):
         actions=np.array(learners_path)[:,1]
         rewards=np.array(learners_path)[:,2]
         
-        text_path = (file_path +'/DQN_Path/'+ final_state +'/'+ 
+        full_file_path=file_path +'/DQN_Path/'+ final_state +'/'
+        if not os.path.isdir(full_file_path):
+            os.makedirs(full_file_path)
+        
+        text_path = (full_file_path+ 
                      str (self.run_number) + '_' +  'path_'+  str(start_state)+ '_episode'+str(episode)  + '.txt' )
         with open(text_path, 'w') as f:
             f.write("# A  Y  S   Action   Reward \n")

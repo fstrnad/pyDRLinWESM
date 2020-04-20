@@ -670,11 +670,14 @@ class DQNLearner(object):
     def plot_learning(self):
         #print(self.learning_progress)
         if self.learning_analysis_folder is None:
-            save_path = self.results_path +'/survived_progress/' + str (self.run_number) + '_'
+            save_path = self.results_path +'/survived_progress/' 
         else:
-            save_path = self.results_path +'/survived_progress/' + self.learning_analysis_folder +'/' +str (self.run_number) + '_'
+            save_path = self.results_path +'/survived_progress/' + self.learning_analysis_folder +'/'
+        
+        if not os.path.isdir(save_path):
+            os.makedirs(save_path)
             
-        with open(save_path +'survived_progress'+ '_noise' + str("%.2f" %self.noise_strength) +'.txt', 'w') as f:
+        with open(save_path +str (self.run_number) + '_'+'survived_progress'+ '_noise' + str("%.2f" %self.noise_strength) +'.txt', 'w') as f:
             for i in range(len(self.survived_steps)):
                 f.write("%s  %s  %s  %s  %s \n" % (self.survived_steps[i][0] ,
                                           self.survived_steps[i][1], 
@@ -682,25 +685,7 @@ class DQNLearner(object):
                                           self.av_tot_reward[i][1],
                                           self.test_tot_reward[i][1]) )
         f.close()
-        
-        plt.figure(figsize=(10,6))
-        
-        plt.plot(*zip(*self.survived_steps), 'x-', color='olive',lw=1, label='Survive Average ' + self.reward_type)
-        plt.plot(*zip(*self.tested_survived_steps), 'x-', color='midnightblue', lw=1, label='Survive Test '+self.reward_type)
-        
-        plt.plot(*zip(*self.av_tot_reward), 'x-', color='dodgerblue',lw=1, label='Reward Average ' + self.reward_type)
-        plt.plot(*zip(*self.test_tot_reward), 'x-', color='darkgoldenrod', lw=1, label='Reward Test '+self.reward_type)
-        
-        
-        plt.xlabel('# Episodes')
-        plt.ylabel('Average Survived Steps/Reward')
-        plt.xlim(0,self.episode_count)
-        plt.legend(loc='upper left', fontsize=14)
-        plt.tight_layout()
-        plt.savefig(save_path + 'survived_progress'+ '_noise' + str("%.2f" %self.noise_strength) +'.pdf')
-        #plt.show()
-        plt.close()
-    
+                    
     def plot_loss_function(self, av_num_episodes):
         #print(self.learning_progress)
         if self.learning_analysis_folder is None:

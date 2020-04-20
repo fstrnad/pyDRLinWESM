@@ -1,7 +1,7 @@
 import numpy
 
 # This class implementation was adapted from: 
-# And https://github.com/rlcode/per/blob/master/SumTree.py
+# https://github.com/rlcode/per/blob/master/SumTree.py
 # For further reference see https://github.com/jaromiru/AI-blog/blob/master/Seaquest-DDQN-PER.py
 
 
