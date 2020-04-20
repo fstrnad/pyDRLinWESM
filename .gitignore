@@ -1,2 +1,4 @@
 # ignore .txt files
 *.txt
+*.project
+*.pydevproject
