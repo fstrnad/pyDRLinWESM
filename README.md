@@ -1,5 +1,5 @@
 # pyDRLinWESM
-A small package for using Deep Reinforcement Learning with World-Earth System Models to discover sustainable management strategies. Deep Reinforcement Learning cannot only play Atari Games and Go but [point to sustainable management pathways as well](https://www.pik-potsdam.de/news/in-short/articial-intelligence-applying-201adeep-reinforcement-learning2018-for-sustainable-development). This repository contains a python implementation developed under developed in the context of the [COPAN](https://www.pik-potsdam.de/research/projects/activities/copan/copan-introduction)
+A small package for using Deep Reinforcement Learning with World-Earth System Models to discover sustainable management strategies. Deep Reinforcement Learning cannot only play Atari Games and Go but [point to sustainable management pathways as well](https://www.pik-potsdam.de/news/in-short/articial-intelligence-applying-201adeep-reinforcement-learning2018-for-sustainable-development). This repository contains a python implementation developed in the context of the [COPAN](https://www.pik-potsdam.de/research/projects/activities/copan/copan-introduction)
 Collaboration at [Potsdam Institute for Climate Impact research](https://www.pik-potsdam.de/).
 
 Please acknowledge and cite the use of this software and its authors when results are used in publications or published elsewhere.
@@ -42,7 +42,7 @@ The neural network is based on the following architecture. The input layer of th
 
 ## Agent-Environment Interface
 
-![Using the agent-environment interface for analyzing World-Earth models via deep reinforcement learning (DRL).](./figures/Agent_Environment_Interface_DQN_Learner_Interpretation-1.png?raw=true) <img src="./figures/Agent_Environment_Interface_DQN_Learner_Interpretation-1.png">
+ <img src="./figures/Agent_Environment_Interface_DQN_Learner_Interpretation-1.png">
 
 This work proposes a new approach for using DRL within World-Earth system models. It uses the basic information if at time `t`  a certain state `s_t` is within the sustainability boundaries. The underlying mathematical foundation is based on an Markov Decission Process (MDP) which is translated to a concrete agent-environment setup.
 
