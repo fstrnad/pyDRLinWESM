@@ -42,7 +42,7 @@ The neural network is based on the following architecture. The input layer of th
 
 ## Agent-Environment Interface
 
-![Alt text](figures/Agent_Environment_Interface_DQN_Learner_Interpretation.pdf?raw=true "Using the agent-environment interface for analyzing World-Earth models via deep reinforcement learning (DRL).") <img src="./figures/Agent_Environment_Interface_DQN_Learner_Interpretation.pdf">
+![Using the agent-environment interface for analyzing World-Earth models via deep reinforcement learning (DRL).](./figures/Agent_Environment_Interface_DQN_Learner_Interpretation-1.png?raw=true) <img src="./figures/Agent_Environment_Interface_DQN_Learner_Interpretation-1.png">
 
 This work proposes a new approach for using DRL within World-Earth system models. It uses the basic information if at time `t`  a certain state `s_t` is within the sustainability boundaries. The underlying mathematical foundation is based on an Markov Decission Process (MDP) which is translated to a concrete agent-environment setup.
 
