@@ -31,6 +31,8 @@ Based on the concept of the agent-environment interface, this reposiThis model i
 
  - copan:GLOBAL Environment [[3]](#3)
 
+The model describes a conceptual seven-dimensional World-Earth model considering the co-evolution of human society and global climate on millennial timescales, having seven dynamic variables, as well as several additional for the agent non-observable auxiliary variables. The model is meant for a qualitative understanding of their complex interrelations rather than for quantitative predictions. 
+This co-evolutionary approach accounts more explicitly for a global carbon cycle as well as for the dynamics of the human population, physical capital, and energy production to simulate the influence of humans on global climate in the Anthropocene.
 
 
 ## Setup for a single run
