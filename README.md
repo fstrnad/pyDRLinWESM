@@ -1,7 +1,7 @@
 # pyDRLinWESM
 A small package for using Deep Reinforcement Learning with World-Earth System Models.
 A python implementation of the 
-[https://www.pik-potsdam.de/research/projects/activities/copan/copan-introduction][COPAN]
+[COPAN](https://www.pik-potsdam.de/research/projects/activities/copan/copan-introduction)
 Collaboration at Potsdam Institute for Climate
 Impact research.
 
@@ -13,7 +13,7 @@ You can use the following reference [[1]](#1):
 Felix M. Strnad, Wolfram Barfuss, Jonathan F. Donges and Jobst Heitzig,
 *Deep reinforcement learning in World-Earth system models to discover sustainable management strategies*,
 Chaos, 2019
-DOI: [[http://aip.scitation.org/doi/10.1063/1.5124673]]
+DOI: [10.1063/1.5124673](http://aip.scitation.org/doi/10.1063/1.5124673)
 
 This package requires for usage:
  - tensorflow>=2.0
@@ -45,7 +45,7 @@ The neural network is based on the following architecture. The input layer of th
 Felix M. Strnad, Wolfram Barfuss, Jonathan F. Donges and Jobst Heitzig, 2019,
 Deep reinforcement learning in World-Earth system models to discover sustainable management strategies,
 Chaos
-DOI: [http://aip.scitation.org/doi/10.1063/1.5124673][10.1063/1.5124673]
+DOI: [10.1063/1.5124673](http://aip.scitation.org/doi/10.1063/1.5124673)
 
 <a id="2">[2]</a>
 Tim Kittel, Rebekka Koch, Jobst Heitzig, Guillaume Deffuant, Jean-Denis Mathias  and Jürgen Kurths, 2017,
@@ -57,4 +57,4 @@ arXiv:1706.04542
 Jan Nitzbon, Jobst Heitzig, and Ulrich Parlitz, 2017,
 Sustainability, collapse and oscillations in a simple World-Earth model, 
 Environmental Research Letters 12.7,
-DOI: [https://iopscience.iop.org/article/10.1088/1748-9326/aa7581][10.1088/1748-9326/aa7581]
+DOI: [10.1088/1748-9326/aa7581](https://iopscience.iop.org/article/10.1088/1748-9326/aa7581)
