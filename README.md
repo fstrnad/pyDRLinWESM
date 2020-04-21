@@ -1,9 +1,6 @@
 # pyDRLinWESM
-A small package for using Deep Reinforcement Learning with World-Earth System Models.
-A python implementation of the 
-[COPAN](https://www.pik-potsdam.de/research/projects/activities/copan/copan-introduction)
-Collaboration at Potsdam Institute for Climate
-Impact research.
+A small package for using Deep Reinforcement Learning with World-Earth System Models to discover sustainable management strategies. Deep Reinforcement Learning cannot only play Atari Games and Go but [point to sustainable management pathways as well](https://www.pik-potsdam.de/news/in-short/articial-intelligence-applying-201adeep-reinforcement-learning2018-for-sustainable-development). This repository contains a python implementation developed under developed in the context of the [COPAN](https://www.pik-potsdam.de/research/projects/activities/copan/copan-introduction)
+Collaboration at [Potsdam Institute for Climate Impact research](https://www.pik-potsdam.de/).
 
 Please acknowledge and cite the use of this software and its authors when results are used in publications or published elsewhere.
 
@@ -22,7 +19,7 @@ This package requires for usage:
 ## Description
 Increasingly complex, non-linear World-Earth system models are used for describing the dynamics of the biophysical Earth system and the socio-economic and socio-cultural World of human societies and their interactions. Identifying pathways towards a sustainable future in these models is a challenging and widely investigated task in the field of climate research and broader Earth system science.  This problem is especially difficult when caring for both environmental limits and social foundations need to be taken into account.
 
-In this work, we propose to combine recently developed deep reinforcement learning (DRL), with classical analysis of trajectories in the World-Earth system as an approach to extend the field of Earth system analysis by a new method.
+In this work, we propose to combine recently developed deep reinforcement learning (DRL) algorithms, with classical analysis of trajectories in the World-Earth system as an approach to extend the field of Earth system analysis by a new method.
 
 ## Environments
  - AYS Environment [[2]](#2)
@@ -37,22 +34,34 @@ This co-evolutionary approach accounts more explicitly for a global carbon cycle
 
 ## Setup for a single run
 After the experience replay memory is filled with experiences from an agent that acts randomly in the environment, the learning process runs as follows.
-The agent is trained for a fixed number of episodes. A start position within the boundaries is randomly drawn from a uniform distribution of states around the current state. The number of iteration steps during one single learning episode is limited to a maximum of `T`. The end of one learning episode is determined either when ` T` is reached or ended prematurely at time `t` either when a boundary is crossed or when approximate convergence to a fixed point is detected. In the latter case, the remaining future rewards are estimated with a discounted reward sum for the remaining time ` T-t` of the reward ` r_t`. In any case, after the end of a learning episode, the environment is reset to time ` t=t_0` and a new start point ` s_{t_0}` within the boundaries of the environment is randomly drawn. 
+The agent is trained for a fixed number of episodes. A start position within the boundaries is randomly drawn from a uniform distribution of states around the current state. The number of iteration steps during one single learning episode is limited to a maximum of `T`. The end of one learning episode is determined either when `T` is reached or ended prematurely at time `t` either when a boundary is crossed or when approximate convergence to a fixed point is detected. In the latter case, the remaining future rewards are estimated with a discounted reward sum for the remaining time `T-t` of the reward `r_t`. In any case, after the end of a learning episode, the environment is reset to time `t=t_0` and a new start point `s_{t_0}` within the boundaries of the environment is randomly drawn. 
 
 ## Neural Network setup
 The neural network is based on the following architecture. The input layer of the size equaling the dimension of the state space is followed by two fully-connected hidden layers, each one consisting of 256 units. The output layer is a fully connected linear layer that provides an output value for each possible action in the action set, representing the estimated Q-value of that action for the state given by the inputs. For minimizing the loss function, instead of simple stochastic gradient descent (SGD) the Adam optimizer is used due to its better performance than SGD in DRL applications. 
+
+
+## Agent-Environment Interface
+
+![Alt text](figures/Agent_Environment_Interface_DQN_Learner_Interpretation.pdf?raw=true "Using the agent-environment interface for analyzing World-Earth models via deep reinforcement learning (DRL).")
+This work proposes a new approach for using DRL within World-Earth system models. It uses the basic information if at time `t`  a certain state `s_t` is within the sustainability boundaries. The underlying mathematical foundation is based on an Markov Decission Process (MDP) which is translated to a concrete agent-environment setup.
+
+In this context, the concept of the agent is solely defined by its action set. In our interpretation, the action set can be regarded as a collection of possible measures the international community could use to influence the system's trajectory. We interpret the different system management options in the described environments as distinct actions of the action set.
+
+In contrast to other applications of DRL where rewards are defined by the application (e.g. scores in a computer game), in our application the reward functions are not a system feature but a parameter of the learning algorithm. We are free in our choice of the reward function and are guided in this choice by how well the chosen reward function helps the learner to achieve the actual goal. Since our ultimate objective is not to maximize some objectively given reward function but to stay within the boundaries we chose the reward functions accordingly. Reward functions can be both continuously and discontinuously changing.
+
+
 
 ## References
 <a id="1">[1]</a> 
 Felix M. Strnad, Wolfram Barfuss, Jonathan F. Donges and Jobst Heitzig, 2019,
 Deep reinforcement learning in World-Earth system models to discover sustainable management strategies,
-Chaos
+Chaos,
 DOI: [10.1063/1.5124673](http://aip.scitation.org/doi/10.1063/1.5124673)
 
 <a id="2">[2]</a>
 Tim Kittel, Rebekka Koch, Jobst Heitzig, Guillaume Deffuant, Jean-Denis Mathias  and Jürgen Kurths, 2017,
 Operationalization of Topology of Sustainable Management to Estimate Qualitatively Different Regions in State Space,
-arXiv:1706.04542
+arXiv: [1706.04542](https://arxiv.org/abs/1706.04542)
 
 
 <a id="3">[3]</a>
