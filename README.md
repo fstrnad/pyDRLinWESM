@@ -21,7 +21,28 @@ Increasingly complex, non-linear World-Earth system models are used for describi
 
 In this work, we propose to combine recently developed deep reinforcement learning (DRL) algorithms, with classical analysis of trajectories in the World-Earth system as an approach to extend the field of Earth system analysis by a new method.
 
+
+## First Steps
+You can try out the framework via the jupyter-notebook in the example folder examples/Example_DRL_environment.ipynb. This notebook guides you through the nessesary functions and improvements the DRL agent can use. 
+You can as well just the example code in examples/example_code_one_run.py via
+
+```
+export PYTHONPATH=. (if not set yet)
+python examples/example_code_one_run.py 0
+```
+
+
 ## Environments
+This package is written in a way for using DRL in Earth system models, mathematically formalized in a Markov decision process. This package includes two prototypes, the AYS Environment and the c:GLOBAL environment (see below). Extensions based on this package can be a tool to discover and analyze management pathways and to get a deeper understanding of the impact of global governance policies.
+Environments contain as an internal variable the current state s of the environment. Based on this state, an environment suitable for our framework requires just two functions:
+ - next_state, reward, done = Environment.step(action)
+ - reward_function() 
+ 
+ The step function implements the dynamics of the environment. The dynamics can be both stochastic or deterministic. You are free in our choice of the reward function and thus you can implement this choice by how well the chosen reward function helps the learner to achieve the actual goal. We implemented for example our reward functions in the following simple, action-independent reward way: 
+ - Survival Reward: Provide a reward of 1 if the state `s_t` is the within the boundaries, else 0.
+ - Boundary distance reward: Calculate the distance of the state `s_t` to the sustainability boundaries in units of distance of the current state of the Earth to the boundaries, i.e. initially the reward is 1.
+  
+
  - AYS Environment [[2]](#2)
 
 Based on the concept of the agent-environment interface, this reposiThis model is a low-complexity model in three dimensions studied and described in detail in [[2]]. It includes parts of climate change, welfare growth and energy transformation. The AYS environment is an interesting minimum-complexity toy model for sustainability science because one can represent both the climate change planetary boundary and a wellbeing social foundation boundary in it by studying whether atmospheric carbon stock may stay below some threshold, and the economic output does not drop below some minimum value at the same time.tory offers a method for using a DRL-agent that is able to act and learn in variable manageable environment models of the Earth system in order to discover management strategies for sustainable development. 
@@ -49,6 +70,8 @@ This work proposes a new approach for using DRL within World-Earth system models
 In this context, the concept of the agent is solely defined by its action set. In our interpretation, the action set can be regarded as a collection of possible measures the international community could use to influence the system's trajectory. We interpret the different system management options in the described environments as distinct actions of the action set.
 
 In contrast to other applications of DRL where rewards are defined by the application (e.g. scores in a computer game), in our application the reward functions are not a system feature but a parameter of the learning algorithm. We are free in our choice of the reward function and are guided in this choice by how well the chosen reward function helps the learner to achieve the actual goal. Since our ultimate objective is not to maximize some objectively given reward function but to stay within the boundaries we chose the reward functions accordingly. Reward functions can be both continuously and discontinuously changing.
+
+
 
 
 

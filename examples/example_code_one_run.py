@@ -11,16 +11,14 @@ The results are stored in single text files, in which all essential hyper-parame
 
 
 from __future__ import print_function
-import sys
 import numpy as np
 
-import os
+import os, sys
  
 import matplotlib 
 
 import pandas as pd
 import datetime
-import networkx as nx
 
 from DeepReinforcementLearning.DQNLearner import DQNLearner 
 from DeepReinforcementLearning.C51Learner import C51Learner
@@ -373,35 +371,22 @@ def run_all_tests(trials, episodes, episode_steps, gamma, batch_size ,
 
 
 def main(argv):
-    #single_run()
     eprint('Simulation started at ', datetime.datetime.now())
-    print('Start creating statistics!')
     
-    
-    #for job array
-    try:
-        job_id = int(os.environ['SLURM_ARRAY_TASK_ID'])
-        matplotlib.use('pdf')
-
-        print("job_id: " + str(job_id))
-    except KeyError:
-        job_id= int (argv[0])
-        print("Not running with SLURM job arrays, but with manual id: ", job_id)
-        
-    
+    job_id= int (argv[0])
+    print("Running with manual id: ", job_id)
     
     gamma=0.96
     Boltzmann_prob=False
       
     trials=10
     episodes=10000
-    episode_steps=1  
+    episode_steps=100  
     noise_strength=0.00
     
     prior_exp_replay=True
     importance_sampling=True
     noisy_net=False
-    
     
     run_all_tests(trials, episodes, episode_steps, gamma, batch_size, 
                   Boltzmann_prob, Update_target_frequency, noise_strength, 
