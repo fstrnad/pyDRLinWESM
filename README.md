@@ -42,7 +42,7 @@ Environments contain as an internal variable the current state s of the environm
  - Survival Reward: Provide a reward of 1 if the state `s_t` is the within the boundaries, else 0.
  - Boundary distance reward: Calculate the distance of the state `s_t` to the sustainability boundaries in units of distance of the current state of the Earth to the boundaries, i.e. initially the reward is 1.
   
-
+Here, we provide a brief description of the two prototype Environments we used as toy examples for our framework. 
  - AYS Environment [[2]](#2)
 
 Based on the concept of the agent-environment interface, this reposiThis model is a low-complexity model in three dimensions studied and described in detail in [[2]]. It includes parts of climate change, welfare growth and energy transformation. The AYS environment is an interesting minimum-complexity toy model for sustainability science because one can represent both the climate change planetary boundary and a wellbeing social foundation boundary in it by studying whether atmospheric carbon stock may stay below some threshold, and the economic output does not drop below some minimum value at the same time.tory offers a method for using a DRL-agent that is able to act and learn in variable manageable environment models of the Earth system in order to discover management strategies for sustainable development. 
@@ -52,6 +52,7 @@ Based on the concept of the agent-environment interface, this reposiThis model i
 The model describes a conceptual seven-dimensional World-Earth model considering the co-evolution of human society and global climate on millennial timescales, having seven dynamic variables, as well as several additional for the agent non-observable auxiliary variables. The model is meant for a qualitative understanding of their complex interrelations rather than for quantitative predictions. 
 This co-evolutionary approach accounts more explicitly for a global carbon cycle as well as for the dynamics of the human population, physical capital, and energy production to simulate the influence of humans on global climate in the Anthropocene.
 
+However, feel free to implement your own environments and test the framework on your own.
 
 ## Setup for a single run
 After the experience replay memory is filled with experiences from an agent that acts randomly in the environment, the learning process runs as follows.
