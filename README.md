@@ -50,18 +50,19 @@ The neural network is based on the following architecture. The input layer of th
 
 
 ## Environments
-This package is written in a way for using DRL in Earth system models, mathematically formalized in a Markov decision process. This package includes two prototypes, the AYS Environment and the c:GLOBAL environment (see below). Extensions based on this package can be a tool to discover and analyze management pathways and to get a deeper understanding of the impact of global governance policies.
+This package is written in a way for using DRL in Earth system models, mathematically formalized in a Markov decision process. This package includes two prototypes, the AYS Environment and the c:GLOBAL environment (see below). Extensions based on this framework might be a tool to discover and analyze management pathways in global policy evaluation and will possibly lead towards a deeper understanding of the impact of global governance policies.
 Environments contain as an internal variable the current state s of the environment. Based on this state, an environment suitable for our framework requires just two functions:
- - next_state, reward, done = Environment.step(action)
- - reward_function() 
- 
- The step function implements the dynamics of the environment. The dynamics can be both stochastic or deterministic. You are free in our choice of the reward function and thus you can implement this choice by how well the chosen reward function helps the learner to achieve the actual goal. We implemented for example our reward functions in the following simple, action-independent reward way: 
- - Survival Reward: Provide a reward of 1 if the state `s_t` is the within the boundaries, else 0.
- - Boundary distance reward: Calculate the distance of the state `s_t` to the sustainability boundaries in units of distance of the current state of the Earth to the boundaries, i.e. initially the reward is 1.
+ - `next_state, reward, done = Environment.step(action)` The step function implements the dynamics of the environment. The dynamics can be both stochastic or deterministic 
+ - `reward_function()` You are free in your choice of the reward function and thus you can let you guide for your choice by how well the chosen reward function helps the learner to achieve the actual goal. We implemented for example our reward functions in the following simple, action-independent way: 
+   - Survival Reward: Provide a reward of 1 if the state `s_t` is the within the boundaries, else 0.
+   - Boundary distance reward: Calculate the distance of the state `s_t` to the sustainability boundaries in units of distance of the current state of the Earth to the boundaries, i.e. initially the reward is 1. 
+ - `action_set` In the interpretation of this framework, the action set A can be regarded as a collection of possible measures the international community could use to influence the system's trajectory. You might interpret the different system management options in the described environments as distinct actions of the action set. 
+
+  
   
 Here, we provide a brief description of the two prototype Environments we used as toy examples for our framework. 
  - **AYS Environment** [[2]](#2)
-     Based on the concept of the agent-environment interface, this reposiThis model is a low-complexity model in three dimensions studied and described in detail in [[2]]. It includes parts of climate change, welfare growth and energy transformation. The AYS environment is an interesting minimum-complexity toy model for sustainability science because one can represent both the climate change planetary boundary and a wellbeing social foundation boundary in it by studying whether atmospheric carbon stock may stay below some threshold, and the economic output does not drop below some minimum value at the same time.tory offers a method for using a DRL-agent that is able to act and learn in variable manageable environment models of the Earth system in order to discover management strategies for sustainable development. 
+     This model is a low-complexity model in three dimensions studied and described in detail in [[2]]. It includes parts of climate change, welfare growth and energy transformation. The AYS environment is an interesting minimum-complexity toy model for sustainability science because one can represent both the climate change planetary boundary and a wellbeing social foundation boundary in it by studying whether atmospheric carbon stock may stay below some threshold, and the economic output does not drop below some minimum value at the same time.tory offers a method for using a DRL-agent that is able to act and learn in variable manageable environment models of the Earth system in order to discover management strategies for sustainable development. 
 
  - **copan:GLOBAL Environment** [[3]](#3)
      The model describes a conceptual seven-dimensional World-Earth model considering the co-evolution of human society and global climate on millennial timescales, having seven dynamic variables, as well as several additional for the agent non-observable auxiliary variables. The model is meant for a qualitative understanding of their complex interrelations rather than for quantitative predictions. 
