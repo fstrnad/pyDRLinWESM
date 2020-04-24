@@ -13,8 +13,10 @@ Chaos, 2019
 DOI: [10.1063/1.5124673](http://aip.scitation.org/doi/10.1063/1.5124673)
 
 This package requires for usage:
- - tensorflow>=2.0
+ - tensorflow=1.14 (tensorflow>=2.0 runs as well, but is significantly slower in running time)
+ - keras>=2.3. (in case of tensorflow2 this package is not nessesary anymore) 
  - pyviability (find at https://github.com/timkittel/ays-model/)
+ - gym 
 
 ## Description
 Increasingly complex, non-linear World-Earth system models are used for describing the dynamics of the biophysical Earth system and the socio-economic and socio-cultural World of human societies and their interactions. Identifying pathways towards a sustainable future in these models is a challenging and widely investigated task in the field of climate research and broader Earth system science.  This problem is especially difficult when caring for both environmental limits and social foundations need to be taken into account.
@@ -89,3 +91,6 @@ Jan Nitzbon, Jobst Heitzig, and Ulrich Parlitz, 2017,
 Sustainability, collapse and oscillations in a simple World-Earth model, 
 Environmental Research Letters 12.7,
 DOI: [10.1088/1748-9326/aa7581](https://iopscience.iop.org/article/10.1088/1748-9326/aa7581)
+
+## License
+pyDRLinWESM is [BSD-licensed (2 clause)](./LICENSE)

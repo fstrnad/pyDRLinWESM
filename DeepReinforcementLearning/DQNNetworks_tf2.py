@@ -10,15 +10,13 @@ All networks are based on the same basic DQN algorithm. It can be enhanced via:
 
 
 import numpy as np
-from packaging import version
 import tensorflow as tf
-
-from keras.optimizers import Adam, RMSprop
-from keras.models import Sequential, Model
-from keras.layers import Dense, Flatten, Lambda
-from keras.layers import Input, GaussianNoise, Activation
-from keras.layers import Add
-from keras import backend as K
+from tensorflow.keras.optimizers import Adam, RMSprop
+from tensorflow.keras.models import Sequential, Model
+from tensorflow.python.keras.layers import Dense, Flatten, Lambda
+from tensorflow.keras.layers import Input, GaussianNoise, Activation
+from tensorflow.keras.layers import Add
+from tensorflow.python.keras import backend as K
 
 HUBER_LOSS_DELTA = 2.0
 
@@ -78,8 +76,8 @@ class DQNetwork:
     
     # x: Input array , y: Output array
     def train(self, x, y, weights=None, epoch=1, verbose=0):       
-        
-        loss = self.model.fit(x, y, batch_size=self.batch_size, epochs=epoch, verbose=verbose, sample_weight=weights)
+        # ToDo fix weights for sampling weights!
+        loss = self.model.fit(x, y, batch_size=self.batch_size, epochs=epoch, verbose=verbose, sample_weight=None)
         return loss.history['loss']
         
     def predict(self, states):
@@ -143,17 +141,28 @@ class Fixed_targetDQNetwork(DQNetwork):
         session = K.get_session()
         for model in [self.model, self.target_model]:
             for layer in model.layers:
-                if isinstance(layer, Dense):
-                    old = layer.get_weights()
-                    if hasattr(layer, 'kernel_initializer'):
-                        layer.kernel.initializer.run(session=session)
-                        layer.bias.initializer.run(session=session)
-                      
-                    if np.array_equal(old, layer.get_weights()):
-                        print(" after initializer run")
-                        print(old, layer.get_weights)
+                if isinstance(layer, tf.keras.Model): #if you're using a model as a layer
+                    self.reset_weights(layer) #apply function recursively
+                    continue
+         
+                #where are the initializers?
+                if hasattr(layer, 'cell'):
+                    init_container = layer.cell
                 else:
-                    print(layer, "not reinitialized")
+                    init_container = layer
+         
+                for key, initializer in init_container.__dict__.items():
+                    if "initializer" not in key: #is this item an initializer?
+                        continue #if no, skip it
+         
+                    # find the corresponding variable, like the kernel or the bias
+                    if key == 'recurrent_initializer': #special case check
+                        var = getattr(init_container, 'recurrent_kernel')
+                    else:
+                        var = getattr(init_container, key.replace("_initializer", ""))
+         
+                    var.assign(initializer(var.shape, var.dtype))
+                    
         
 """
 This is the implementation of Dueling Network architectures. 

@@ -20,7 +20,13 @@ import sys
 import matplotlib.pyplot as plt
 
 from DeepReinforcementLearning.memories import PERISMemory, PERMemory, Memory
-from DeepReinforcementLearning.DQNNetworks import DuellingDDQNetwork, Fixed_targetDQNetwork
+import tensorflow as tf
+from packaging import version
+
+if version.parse(tf.__version__)>=version.parse('2.0'): 
+    from DeepReinforcementLearning.DQNNetworks_tf2 import DuellingDDQNetwork, Fixed_targetDQNetwork
+else:    
+    from DeepReinforcementLearning.DQNNetworks import DuellingDDQNetwork, Fixed_targetDQNetwork
 
 import random
 

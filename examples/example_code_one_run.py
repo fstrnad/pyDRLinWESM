@@ -79,48 +79,6 @@ elif Env=='cG':
             )
     reward_types=['PB'  ,'survive','final_state', 'ren_knowledge' , 'desirable_region',  ]
 
-elif Env=='exploit':
-    Update_target_frequency=200
-    explore_start = 1.0 
-    explore_stop = 0.0001 
-    decay_rate=0.1 
-    memory_size = int(1e5)   # This number might need further exploration!
-    V_max=35
-    V_min=-20
-    learning_analysis_folder='SHFDT'
-    observables=dict(   S=True,
-                    H=True,
-                    F=True,
-                    D=True,
-                    T=True
-            
-            )
-    reward_types=['final_state', 'sus_fraction', 'PB'  ,'survive','desirable_region',  ]
-   
-    """
-    Exploit parameters
-    """
-    N = 200  # Number of agents
-    k=20 #average degree of nodes
-    p=k/(N-1)  # link density
-    A = nx.adj_matrix(nx.erdos_renyi_graph(N,p)).toarray() # Adjaceny matrix
-    S = np.random.randint(2, size=N)  # Agent's Strategies, S_i = 0 : non-sustainable; S_i=1 : sustainable
-    s = np.ones(N)                    # Agent's Stocks
-    smax = np.ones(N)                 # Agent's Maximum Stocks (Capacities)
-    g =  np.ones(N)                 # Agent's Growth Rates
-    r = 100*np.ones(N)                    # Agent's Rationalities, very likely to change strategy already with small Delta h_ij
-    phi = 0.0                        # Rewiring probability
-    tau = .25                          # Update timescale
-    
-    """
-    Environment variables for learning
-    """
-    t0 = 0
-    dt = .1 
-    redistribution_rate=1.
-    taxation_rate=0.0
-    max_steps=100000   # The Exploit model with the chosen parameter set will converge during this time 
-
 else:  
     print("ERROR! The Environment you chose is not available: ", Env)
 
@@ -380,8 +338,8 @@ def main(argv):
     Boltzmann_prob=False
       
     trials=10
-    episodes=10000
-    episode_steps=100  
+    episodes=7000
+    episode_steps=500  
     noise_strength=0.00
     
     prior_exp_replay=True
