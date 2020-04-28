@@ -1,5 +1,5 @@
 # pyDRLinWESM
-A small package for using Deep Reinforcement Learning with World-Earth System Models to discover sustainable management strategies. Deep Reinforcement Learning cannot only play Atari Games and Go but [point to sustainable management pathways as well](https://www.pik-potsdam.de/news/in-short/articial-intelligence-applying-201adeep-reinforcement-learning2018-for-sustainable-development). This repository contains a python implementation developed in the context of the [COPAN](https://www.pik-potsdam.de/research/projects/activities/copan/copan-introduction)
+A small package for using Deep Reinforcement Learning within World-Earth System Models to discover sustainable management strategies. Deep Reinforcement Learning cannot only play Atari Games and Go but [point to sustainable management pathways as well](https://www.pik-potsdam.de/news/in-short/articial-intelligence-applying-201adeep-reinforcement-learning2018-for-sustainable-development). This repository contains a python implementation developed in the context of the [COPAN](https://www.pik-potsdam.de/research/projects/activities/copan/copan-introduction)
 Collaboration at [Potsdam Institute for Climate Impact research](https://www.pik-potsdam.de/).
 
 Please acknowledge and cite the use of this software and its authors when results are used in publications or published elsewhere.
